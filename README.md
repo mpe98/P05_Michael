@@ -93,6 +93,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: example
 ```
+docker-compose -f docker-compose.yml up
 USUARIO: root
 CONTRASEÑA: example
 
@@ -112,6 +113,8 @@ services:
     image: redis
     restart: always
 ```
+docker-compose -f docker-compose.yml up
+
 ## APACHE
 https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Simple-Apache-docker-compose-example-with-Dockers-httpd-image
 ```
@@ -125,3 +128,4 @@ services:
     volumes:
     - ./website:/usr/local/apache2/htdocs
 ```
+docker-compose -f docker-compose.yml up
