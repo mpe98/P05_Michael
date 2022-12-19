@@ -1,3 +1,5 @@
+Cada aplicación debe tener un directorio con un fichero docker-compose.yml en el que introduciomos el código descrito aquí abajo:
+
 ## MEDIAWIKI
 https://hub.docker.com/_/mediawiki
 
@@ -33,12 +35,15 @@ volumes:
   images:
   db:
 ```
-SEGUIMOS LOS PASOS EN EL NAVEGADOR (admin, w12w12w12w12), Y PEGAMOS EL ARCHIVO LOCALSETTINGS.PHP EN LA CARPETA EN LA QUE SE ENCUENTRA EL .YML -> docker cp .\LocalSettings.php mediawiki_mediawiki_1:/var/www/html
-
-PARAMOS CON docker-compose stop Y DESCOMENTAMOS LA LINEA: - ./LocalSettings.php:/var/www/html/LocalSettings.php EN EL .YML. DESPUES VOLVEMOS A HACER docker-compose -f docker-compose.yml up
+En la consola: docker-compose -f docker-compose.yml up  
+Empezamos el setup y pegamos el IPADRESS, que encontramos en mariadb en mi caso 172.17.0.2, en el servidor de la base de datos.  
+En nombre de usuario de la base de datos ponemos wikiuser y en contraseña example. 
+Pegamos LOCALSETTINGS.PHP en la carpeta mediawiki donde tenemos el archivo .YML y en consola ponemos docker cp .\LocalSettings.php mediawiki_mediawiki_1:/var/www/html  
+Paramos con docker-compose stop y descomentamos la linea: - ./LocalSettings.php:/var/www/html/LocalSettings.php en el .YML. Después volvemos a hacer docker-compose -f docker-compose.yml up
 
 ## WORDPRESS
 https://hub.docker.com/_/wordpress
+
 ```
 version: '3.1'
 
@@ -94,11 +99,14 @@ services:
       MYSQL_ROOT_PASSWORD: example
 ```
 docker-compose -f docker-compose.yml up
-USUARIO: root
-CONTRASEÑA: example
+
+Para acceder en el navegador:
+- USUARIO: root
+- CONTRASEÑA: example
 
 ## GUESTBOOK
 https://iesgn.github.io/curso_docker_2021/sesion5/guestbook.html
+
 ```
 version: '3.1'
 services:
